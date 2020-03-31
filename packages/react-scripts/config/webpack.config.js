@@ -14,6 +14,8 @@ const webpack = require('webpack');
 const resolve = require('resolve');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin');
+const cspConfig = require('./cspConfig');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -137,7 +139,6 @@ module.exports = function(webpackEnv) {
     }
     return loaders;
   };
-
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     // Stop compilation early in production
@@ -168,6 +169,10 @@ module.exports = function(webpackEnv) {
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
     ].filter(Boolean),
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM',
+    },
     output: {
       // The build folder.
       path: isEnvProduction ? paths.appBuild : undefined,
@@ -584,6 +589,15 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
+      // Add content secuity policy from cspConfig
+      new CspHtmlWebpackPlugin(cspConfig, {
+        enabled: true,
+        hashingMethod: 'sha256',
+        nonceEnabled: {
+          'script-src': false,
+          'style-src': false,
+        },
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
