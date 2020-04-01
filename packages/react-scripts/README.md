@@ -28,3 +28,9 @@ The following customisations are added as a part of swoop.
         },
       }),
   ```
+
+## SWOOP ENV
+
+In `react-scripts/config/env.js`, changed `REACT_APP_` to `SWOOP_`
+
+With this, the Swoop projects can define the environment variable with the prefix `SWOOP_`
