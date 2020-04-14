@@ -1,6 +1,6 @@
 {
   "name": "@swoop-ltd/react-scripts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Swoop configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
