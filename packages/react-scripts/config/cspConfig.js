@@ -7,6 +7,7 @@ const cspConfigProd = {
   'script-src': [
     "'self'",
     "'unsafe-eval'",
+    'https://*.swooptech.dev/',
     'https://www.google-analytics.com/analytics.js',
     'https://www.google-analytics.com/analytics_debug.js',
     'https://widget.intercom.io',
@@ -16,11 +17,13 @@ const cspConfigProd = {
   'style-src': [
     "'self'",
     "'unsafe-inline'",
+    'https://*.swooptech.dev',
     'https://fonts.googleapis.com/css',
   ],
   'img-src': [
     "'self'",
     'data:',
+    'https://*.swooptech.dev',
     'https://*.blob.core.windows.net',
     'https://static.intercomassets.com',
     'https://js.intercomcdn.com',
@@ -30,12 +33,14 @@ const cspConfigProd = {
   'font-src': [
     "'self'",
     'data:',
+    'https://*.swooptech.dev',
     'https://fonts.gstatic.com',
     'https://js.intercomcdn.com/fonts/',
     'https://use.typekit.net',
   ],
   'connect-src': [
     "'self'",
+    'https://*.swooptech.dev',
     'https://*.swoopfunding.com/hawk/api/',
     'https://*.google-analytics.com/',
     'https://*.intercom.io',
