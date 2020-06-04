@@ -15,7 +15,7 @@ const cspConfigProd = {
     'https://js.intercomcdn.com',
     'https://prod.webpu.sh',
     'https://cdn.tryretool.com/embed.js',
-    'https://swoopfunding.retool.com/',
+    'https://*.retool.com/',
   ],
   'style-src': [
     "'self'",
@@ -54,9 +54,10 @@ const cspConfigProd = {
     'https://*.intercom.io',
     'https://uploads.intercomcdn.com',
     'wss://*.intercom.io',
+    'https://*.retool.com/',
   ],
   'media-src': ['https://js.intercomcdn.com'],
-  'frame-src': ['https://www.google.com', 'https://swoopfunding.retool.com/'],
+  'frame-src': ['https://www.google.com', 'https://*.retool.com/'],
 };
 
 let cspConfig = cspConfigProd;
