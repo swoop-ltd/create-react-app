@@ -14,6 +14,8 @@ const cspConfigProd = {
     'https://widget.intercom.io',
     'https://js.intercomcdn.com',
     'https://prod.webpu.sh',
+    'https://cdn.tryretool.com/embed.js',
+    'https://swoopfunding.retool.com/',
   ],
   'style-src': [
     "'self'",
@@ -54,7 +56,7 @@ const cspConfigProd = {
     'wss://*.intercom.io',
   ],
   'media-src': ['https://js.intercomcdn.com'],
-  'frame-src': ['https://www.google.com'],
+  'frame-src': ['https://www.google.com', 'https://swoopfunding.retool.com/'],
 };
 
 let cspConfig = cspConfigProd;
@@ -65,7 +67,7 @@ if (process.env.NODE_ENV !== 'production') {
     'script-src': [
       ...cspConfigProd['script-src'],
       "'unsafe-eval'",
-      "'unsafe-inline'",
+      "'sha256-QAj9SgqS0tkqFXsMg6gbHzN3KfNnrPW0N0FCdMzN3MI='",
       'http://localhost:*',
     ],
     'style-src': [...cspConfigProd['style-src'], 'http://localhost:*'],
