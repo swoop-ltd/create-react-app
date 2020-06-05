@@ -57,7 +57,11 @@ const cspConfigProd = {
     'https://*.retool.com/',
   ],
   'media-src': ['https://js.intercomcdn.com'],
-  'frame-src': ['https://www.google.com', 'https://*.retool.com/'],
+  'frame-src': [
+    'https://www.google.com',
+    'https://*.retool.com/',
+    'https://accounts.google.com/',
+  ],
 };
 
 let cspConfig = cspConfigProd;
