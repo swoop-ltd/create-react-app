@@ -55,6 +55,8 @@ const cspConfigProd = {
     'https://uploads.intercomcdn.com',
     'wss://*.intercom.io',
     'https://*.retool.com/',
+    'https://*.ingest.sentry.io/',
+    'https://*.sentry.io',
   ],
   'media-src': ['https://js.intercomcdn.com'],
   'frame-src': [
