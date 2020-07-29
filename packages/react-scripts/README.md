@@ -12,7 +12,7 @@ The following customisations are added as a part of swoop.
 
 ## CspHtmlPlugin
 
-- To whitelist the content sources, a set of content security configs are added to the HTML meta tag. The configs can be found in
+- To allow the list of content sources, a set of content security configs are added to the HTML meta tag. The configs can be found in
 
   `react-scripts/config/cspConfig.js`
 
