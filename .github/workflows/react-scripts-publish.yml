@@ -8,7 +8,7 @@ on:
     branches:
       - master
     paths:
-      - packages/react-scripts/**'
+      - 'packages/react-scripts/**'
 defaults:
   run:
     working-directory: packages/react-scripts
