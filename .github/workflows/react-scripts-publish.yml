@@ -21,7 +21,9 @@ jobs:
       - uses: swoop-ltd/setup-node@v1
         with:
           node-version: '12.x'
-          registry-url: https://npm.pkg.github.com
+          registry-url: https://npm.pkg.github.com 
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@swoop-ltd'
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
