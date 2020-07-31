@@ -13,7 +13,7 @@ defaults:
   run:
     working-directory: packages/react-scripts
 jobs:
- publish:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: swoop-ltd/checkout@v2
