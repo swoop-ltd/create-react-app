@@ -57,6 +57,7 @@ const cspConfigProd = {
     'https://*.retool.com/',
     'https://*.ingest.sentry.io/',
     'https://*.sentry.io',
+    'https://apm.dev.internal.swoopfunding.com/intake/v2/rum/events',
   ],
   'media-src': ['https://js.intercomcdn.com'],
   'frame-src': [
