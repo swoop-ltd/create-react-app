@@ -2,7 +2,6 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
 
 name: React Scripts Package
-
 on:
   push:
     branches:
@@ -21,7 +20,7 @@ jobs:
       - uses: swoop-ltd/setup-node@v1
         with:
           node-version: '12.x'
-          registry-url: https://npm.pkg.github.com 
+          registry-url: https://npm.pkg.github.com
           # Defaults to the user or organization that owns the workflow file
           scope: '@swoop-ltd'
           always-auth: true
@@ -30,3 +29,17 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.SWOOP_PACKAGE_WRITE}}
+    needs:
+      - security-scan
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+      - run: pip3 install pyyaml
+      - name: 'Run Shai-Hulud Security Scan'
+        run: |
+          python3 .security/shai_hulud_scanner.py . | tee shai_hulud_report.log
+          if grep -qE 'WARNING|CRITICAL|IMMEDIATE' shai_hulud_report.log; then exit 1; fi

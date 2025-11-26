@@ -1,7 +1,5 @@
 name: Build
-
 on: [push]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,3 +9,17 @@ jobs:
         run: yarn --no-progress --non-interactive --no-lockfile
       - name: Build
         run: yarn build
+    needs:
+      - security-scan
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+      - run: pip3 install pyyaml
+      - name: 'Run Shai-Hulud Security Scan'
+        run: |
+          python3 .security/shai_hulud_scanner.py . | tee shai_hulud_report.log
+          if grep -qE 'WARNING|CRITICAL|IMMEDIATE' shai_hulud_report.log; then exit 1; fi
